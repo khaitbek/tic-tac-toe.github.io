@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200&display=swap');
+*,*::before, *::after{
+    box-sizing: border-box;
+}
+body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins',sans-serif;
+}
+.board{
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    grid-template-columns: repeat(3,auto);
+}
+.board .cell{
+    width: 100px;
+    height: 100px;
+    background: #fff;
+    border: 1px solid #000;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    justify-content: center;align-items: center;
+}
+
+.board.x .cell:hover{
+
+}
+
+.cell.x, .cell.o{
+    cursor: not-allowed;
+}
+.cell.x::before, .cell.x::after,
+.board.x .cell:not(.x):not(.o):hover::before, .cell:not(.x):not(.o):hover::after
+{
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 100px;
+    background-color: black;
+   
+}
+.cell.x::before, .board.x .cell:not(.x):not(.o)::before{
+    transform: rotate(45deg);
+}
+.cell.x::after, .board.x .cell:not(.x):not(.o)::after{
+    transform: rotate(-45deg);
+}
+
+.cell.o::before,
+.board.o .cell:not(.x):not(.o):hover::before
+{
+    content: '';
+    position: absolute;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    border: 5px solid black;
+}
+.cell.o::after, .board.o .cell:not(.x):not(.o):hover::after{
+    content: '';
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: transparent;
+}
+.winning-message{
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.9);
+    display: none;
+    place-items: center;
+    place-content: center;
+}
+.winning-message h1{
+    color: #fff;
+    font-size: 60px;
+}
+.winning-message button{
+    background: #fff;
+    border: 2px solid black;
+    padding: 10px 15px;
+    font-size: 40px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: background 0.5s ease;
+}
+.winning-message button:hover{
+    background: #000;
+    color: #fff;
+    border-color: #fff;
+}
+.winning-message a{
+    background: #fff;
+    color: black;
+    text-decoration: none;
+    padding: 10px 15px;
+    font-size: 20px;
+    margin-top: 25px;
+    letter-spacing: 1px;
+    border-radius: 5px;
+    font-weight: bold;
+    border: 2px solid black;
+}
